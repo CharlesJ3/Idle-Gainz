@@ -48,6 +48,7 @@ const player = {
   'Ok, starting to get there', 'Worthy of a statue made of butter', 'You don\'t hate yourself... as much', 'The beach is THAT way!',
   ],
   level: 0,
+  gainz: 0,
   enemyLootChoice : [0,0,0],
 
   //Our Gainz Status!
@@ -83,6 +84,12 @@ const achievements = {
 
 player.getGainzStatus();
 
+
+/*
+* Menu and Menu Switching
+*/
+
+
 /*
 * Find a Place For Me
 */
@@ -97,3 +104,12 @@ const checkForTalents = function(){
     $(".modalTalents").css('display', 'inherit');
   }
 }
+
+
+$( '.menuTable' ).hover(
+  function() {
+    $( this ).addClass( "custom-heading-1" );
+  }, function() {
+    $( this ).removeClass( "custom-heading-1" );
+  }
+);

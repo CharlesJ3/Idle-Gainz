@@ -1,10 +1,111 @@
+/*
+* IMPORTS
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Bangers');
 
+/*
+* KEYFRAMES / ANIMATIONS
+*/
 
-#menuSystemMainOptions{
-  top: 320px;
-  left: 2px;
-  position: absolute; 
+@keyframes colorChange {
+  0% {  
+    color: lightsalmon;
+    text-shadow: 
+    2px -2px 0 lightsalmon, 
+    -2px 2px 2px gold, 
+    -4px 4px 2px yellow,
+    -6px 6px 2px green, 
+    -8px 8px 2px lightblue;
+    /* -10px 20px 2px palevioletred;  */
+  }
+
+  18% {  
+    color: palevioletred;
+    text-shadow: 
+    2px -2px 0 palevioletred, 
+    -2px 2px 2px lightsalmon, 
+    -4px 4px 2px gold,
+    -6px 6px 2px yellow, 
+    -8px 8px 2px green;
+    /* -10px 20px 2px lightblue;  */
+  }
+
+  36% {  
+    color: lightblue;
+    text-shadow: 
+    2px -2px 0 lightblue, 
+    -2px 2px 2px palevioletred, 
+    -4px 4px 2px lightsalmon,
+    -6px 6px 2px gold, 
+    -8px 8px 2px yellow; 
+    /* -10px 20px 2px green;  */
+  }
+
+  54% {  
+    color: green;
+    text-shadow: 
+    2px -2px 0 green, 
+    -2px 2px 2px lightblue, 
+    -4px 4px 2px palevioletred,
+    -6px 6px 2px lightsalmon, 
+    -8px 8px 2px gold;
+    /* -10px 20px 2px yellow;   */
+  }
+  
+  72% {  
+    color: yellow;
+    text-shadow: 
+    2px -2px 0 yellow, 
+    -2px 2px 2px green, 
+    -4px 4px 2px lightblue,
+    -6px 6px 2px palevioletred, 
+    -8px 8px 2px lightsalmon;
+    /* -10px 20px 2px gold;   */
+  }
+
+  90% {  
+    color: gold;
+    text-shadow: 
+    2px -2px 0 gold, 
+    -2px 2px 2px yellow, 
+    -4px 4px 2px green,
+    -6px 6px 2px lightblue, 
+    -8px 8px 2px palevioletred;
+    /* -10px 20px 2px lightsalmon;     */
+  }
+  
+  100% {  
+    color: lightsalmon;
+    text-shadow: 
+    2px -2px 0 lightsalmon, 
+    -2px 2px 2px gold, 
+    -4px 4px 2px yellow,
+    -6px 6px 2px green, 
+    -8px 8px 2px lightblue;
+    /* -10px 20px 2px palevioletred;  */
+  }
+}
+.custom-heading-1 {
+  text-align: center;  
+  transition: text-shadow 2s;
+  text-shadow: 
+  1px -1px 0 lightsalmon, 
+  -1px 2px 1px gold, 
+  -2px 4px 1px yellow,
+  -3px 6px 1px green, 
+  -4px 8px 1px lightblue, 
+  -5px 10px 1px palevioletred; 
+  animation: colorChange 3s linear infinite;
+}
+/*
+* Menu System
+*/ 
+
+#menuSystemMainOptions {
+  position: absolute;
+  top: 315.5px;
+  left: 14px;
 }
 
 #menuSystemMainOptions th{
@@ -12,15 +113,56 @@
 }
 
 .menuTable {
-  border: 1px solid black;
   width: 100px;
   height: 50px;
 }
 
-#menuSystemMainOptions {
+#menuTabOne, #menuTabTwo, #menuTabThree, #menuTabFour {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-color: black;
+  text-shadow: 5px 5px 5px white;
+}
+
+#menuTabOne {
+  transition: 1s;
+  box-shadow: 0.1em 0.1em 0 0 #4F2683, inset 0.1em 0.1em 0 0 rgb(172, 5, 5);
+}
+
+#menuTabTwo {
+  transition: 1s;
+  box-shadow: 0.1em 0.1em 0 0 rgb(38, 112, 131), inset 0.1em 0.1em 0 0 #4F2683;
+}
+
+#menuTabThree {
+  transition: 1s;
+  box-shadow: 0.1em 0.1em 0 0 rgb(45, 129, 37), inset 0.1em 0.1em 0 0 rgb(38, 112, 131);  
+}
+
+#menuTabFour {
+  transition: 1s;
+  box-shadow: 0.1em 0.1em 0 0  rgb(172, 5, 5), inset 0.1em 0.1em 0 0 #4F2683;  
+}
+
+#menuSystemOne, #menuSystemTwo, #menuSystemThree, #menuSystemFour {
+  width: 784px;
+  height: 226px;
   position: absolute;
-  top: 317px;
-  left: 12px;
+  top: 374px;
+  left: 15px;
+  display:inline-block;
+}
+
+#menuSystemTwo {
+  border: 3px solid black;
+}
+
+#menuSystemThree {
+  
+}
+
+#menuSystemFour {
+  
 }
 
 /*
