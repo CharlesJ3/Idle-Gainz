@@ -28,9 +28,9 @@ let drawBorders = function() {
   context.strokeStyle = 'maroon';
 
   //Borders for canvas
-  let mainBorder = context.strokeRect(1, 1, 398, 298); 
-  let topBorder = context.strokeRect  (1, 1, 398, 288 / 1.885);
-  let middleBorder = context.strokeRect(1, 1, 398, 298 / 1.65);
+  const mainBorder = context.strokeRect(1, 1, 398, 298); 
+  const topBorder = context.strokeRect  (1, 1, 398, 288 / 1.885);
+  const middleBorder = context.strokeRect(1, 1, 398, 298 / 1.65);
 
 }
 
@@ -42,4 +42,58 @@ drawBorders();
 * -------------------------------
 */
 
-console.log('Begin!');
+const player = {
+  gainzLevel: 0,
+  gainzStatus: ['So small it physically hurts to look at you', 'A disappointment to your ancestors', 'Beginner Gainz Starting', 
+  'Ok, starting to get there', 'Worthy of a statue made of butter', 'You don\'t hate yourself... as much', 'The beach is THAT way!',
+  ],
+  level: 0,
+  enemyLootChoice : [0,0,0],
+
+  //Our Gainz Status!
+  updateGainz(){
+    if(this.gainzLevel < 6){
+      this.gainzLevel++;
+    }
+  },
+
+  //Show the Gainz Status!
+  getGainzStatus(){
+    document.getElementById('gainzStatus').innerHTML = `${this.gainzStatus[this.gainzLevel]}`;
+  },
+
+  //Update all text that may have been updated randomly at one point in time, space, and gainz
+  runUpdateStatusText(){
+    this.getGainzStatus();
+  }
+
+}
+
+const enemy = {
+
+}
+
+const skills = {
+  
+}
+
+const achievements = {
+
+}
+
+player.getGainzStatus();
+
+/*
+* Find a Place For Me
+*/
+
+const checkForTalents = function(){
+  
+  if(!$('#tmodalTalents').prop('checked')) {
+    $(".modalTalents").css('display', 'none');
+  }
+  
+  if($('#tmodalTalents').prop('checked')) {
+    $(".modalTalents").css('display', 'inherit');
+  }
+}

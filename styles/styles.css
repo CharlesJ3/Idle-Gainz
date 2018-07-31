@@ -8,9 +8,70 @@
 }
 
 #menuSystemMainOptions th{
-  width: 120px;
+  width: 192px;
 }
 
-p {
-  color: red;
+.menuTable {
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+}
+
+#menuSystemMainOptions {
+  position: absolute;
+  top: 317px;
+  left: 12px;
+}
+
+/*
+* Modal Stuff
+*/
+
+#tmodalTalents {
+  color: black;
+  width: 20px;
+  height: 20px;
+  background-color: #27ae60;
+  z-index: 2;
+  position: absolute;
+  top: 5px;
+  left: 121px; 
+}
+
+#tmodalTalents:after {
+  content: attr(data-hide);
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  color: blue;
+  font-weight: bold;
+  position: absolute;
+  transition: background-color 0.4s linear;  
+}
+
+#tmodal:checked, #tmodalSettings:checked, #tmodalTalents:checked { 
+  color: black;
+  transition: background-color 0.3s linear;
+}
+#tmodal:checked:after, #tmodalSettings:checked:after, #tmodalTalents:checked:after {
+  z-index: 22;
+  margin-top: 2px;
+}
+
+#tmodal:checked ~ .modal, #tmodalSettings:checked ~ .modal, #tmodalTalents:checked ~ .modal {
+  opacity: 1;
+}
+
+.modal, .modalSettings, .modalTalents {
+  display: none;
+  border: 1px solid black;
+  z-index: 1;
+  padding: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 590px;
+  width: 790px; 
+  background-color: rgba(0, 0, 0, .80);
 }

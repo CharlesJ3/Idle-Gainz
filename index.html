@@ -7,18 +7,23 @@
   <!-- Canvas Area -->
   <canvas id="battleArea" width="800" height="600"></canvas>
 
+  <input onclick="checkForTalents()" id="tmodalTalents" type="checkbox" data-show="" data-hide=""/>
   <!-- Menu System -->
   <div id="menuSystemMainOptions">
-    <table>
-      <tr>
-        <th id="menuTabOne"></th>
-        <th id="menuTabTwo"></th>
-        <th id="menuTabThree"></th>
-        <th id="menuTabFour"></th>
+    <table id="skillsTable">
+      <tr id="skillsTableRow">
+        <th class="menuTable" id="menuTabOne" onclick='player.getGainzStatus(), player.updateGainz(), player.getGainzStatus()'></th>
+        <th class="menuTable" id="menuTabTwo"></th>
+        <th class="menuTable" id="menuTabThree"></th>
+        <th class="menuTable" id="menuTabFour"></th>
       </tr>
     </table>
   </div>
 
+  <div class="modalTalents">
+  </div>
+
+  <p id="gainzStatus"></p>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/main.js"></script>
