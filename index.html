@@ -1,47 +1,58 @@
 <html>
 <head>
-  <title>Idle Pets</title>
+  <title>Idle Gainz</title>
   <link type="text/css" href="styles/styles.css" rel="stylesheet">
 </head>
 <body>
   <!-- Canvas Area -->
   <canvas id="battleArea" width="800" height="600"></canvas>
 
-  <input onclick="checkForTalents()" id="tmodalTalents" type="checkbox" data-show="" data-hide=""/>
+  <!-- <input onclick="checkForTalents()" id="tmodalTalents" type="checkbox" data-show="" data-hide=""/> -->
 
   <!-- Menu System -->
   <div id="menuSystemMainOptions">
     <table id="skillsTable">
       <tr id="skillsTableRow">
-        <th class="menuTable" id="menuTabOne" onclick='player.getGainzStatus(), player.updateGainz(), player.getGainzStatus()'>Liftz</th>
-        <th class="menuTable" id="menuTabTwo">Talentz</th>
-        <th class="menuTable" id="menuTabThree">Achievements / Statz</th>
-        <th class="menuTable" id="menuTabFour">Settingz</th>
+        <th class="menuTable" id="menuTabOne" onclick='switchMenuOne();'>Liftz</th>
+        <th class="menuTable" id="menuTabTwo" onclick='switchMenuTwo();'>Talentz</th>
+        <th class="menuTable" id="menuTabThree" onclick='switchMenuThree();'>Achievementz / Statz</th>
+        <th class="menuTable" id="menuTabFour" onclick='switchMenuFour();'>Settingz</th>
       </tr>
     </table>
   </div>
 
+
+  <!-- Liftz -->
   <div id="menuSystemOne">
 
 
   </div>
+
+  <!-- Talentz -->
   <div id="menuSystemTwo">
 
     
   </div>
+
+  <!-- Achievementz / Statz -->
   <div id="menuSystemThree">
 
     
   </div>
+
+  <!-- Settingz -->
   <div id="menuSystemFour">
 
     
   </div>
 
+
+  
   <div class="modalTalents">
   </div>
 
   <p id="gainzStatus"></p>
+
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/main.js"></script>

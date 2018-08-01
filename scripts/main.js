@@ -82,19 +82,43 @@ const achievements = {
 
 }
 
-player.getGainzStatus();
-
-
 /*
 * Menu and Menu Switching
 */
+// #menuSystemTwo
 
 
-/*
-* Find a Place For Me
-*/
+// REFACTOR : 
+const switchMenuOne = () => {
+  $( "#menuSystemOne" ).css('display', 'inherit');
+  $( "#menuSystemTwo" ).css('display', 'none');
+  $( "#menuSystemThree" ).css('display', 'none');
+  $( "#menuSystemFour" ).css('display', 'none');
+}
 
-const checkForTalents = function(){
+const switchMenuTwo = () => {
+  $( "#menuSystemOne" ).css('display', 'none');
+  $( "#menuSystemTwo" ).css('display', 'inherit');
+  $( "#menuSystemThree" ).css('display', 'none');
+  $( "#menuSystemFour" ).css('display', 'none');
+}
+
+const switchMenuThree = () => {
+  $( "#menuSystemOne" ).css('display', 'none');
+  $( "#menuSystemTwo" ).css('display', 'none');
+  $( "#menuSystemThree" ).css('display', 'inherit');
+  $( "#menuSystemFour" ).css('display', 'none');
+}
+
+const switchMenuFour = () => {
+  $( "#menuSystemOne" ).css('display', 'none');
+  $( "#menuSystemTwo" ).css('display', 'none');
+  $( "#menuSystemThree" ).css('display', 'none');
+  $( "#menuSystemFour" ).css('display', 'inherit');
+}
+
+
+const checkForTalents = () => {
   
   if(!$('#tmodalTalents').prop('checked')) {
     $(".modalTalents").css('display', 'none');
@@ -110,6 +134,13 @@ $( '.menuTable' ).hover(
   function() {
     $( this ).addClass( "custom-heading-1" );
   }, function() {
-    $( this ).removeClass( "custom-heading-1" );
+    setTimeout(() => {
+      $( this ).removeClass( "custom-heading-1" )
+    }, 2500);
   }
 );
+
+
+/*
+* Find a Place For Me
+*/

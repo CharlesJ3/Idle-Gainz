@@ -96,7 +96,7 @@
   -3px 6px 1px green, 
   -4px 8px 1px lightblue, 
   -5px 10px 1px palevioletred; 
-  animation: colorChange 3s linear infinite;
+  animation: colorChange 3s linear;
 }
 /*
 * Menu System
@@ -118,10 +118,10 @@
 }
 
 #menuTabOne, #menuTabTwo, #menuTabThree, #menuTabFour {
+  font-size: 20px;
   color: white;
   text-shadow: 1px 1px 1px black;
   background-color: black;
-  text-shadow: 5px 5px 5px white;
 }
 
 #menuTabOne {
@@ -148,21 +148,45 @@
   width: 784px;
   height: 226px;
   position: absolute;
-  top: 374px;
-  left: 15px;
-  display:inline-block;
+  top: 372px;
+  left: 10px;
 }
 
+#menuSystemOne {
+  border-top: 4px solid rgb(47, 20, 202);
+  border-bottom: 4px solid rgb(47, 20, 202);
+  border-left: 5px solid rgb(47, 20, 202);
+  border-right: 5px solid rgb(47, 20, 202);
+  transition: 1s;
+  background-image: url('../images/space-ui-background-blue.png');
+}
+
+
 #menuSystemTwo {
-  border: 3px solid black;
+  border-top: 4px solid red;
+  border-bottom: 4px solid red;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+  display: none;
+  background-image: url('../images/space-ui-background-red.png');
 }
 
 #menuSystemThree {
-  
+  border-top: 4px solid green;
+  border-bottom: 4px solid green;
+  border-left: 3px solid green;
+  border-right: 3px solid green;
+  display: none;
+  background-image: url('../images/space-ui-background-green.png');
 }
 
 #menuSystemFour {
-  
+  border-top: 4px solid purple;
+  border-bottom: 4px solid purple;
+  border-left: 3px solid purple;
+  border-right: 3px solid purple;
+  display: none;
+  background-image: url('../images/seamless-abstract-nebula.jpg');
 }
 
 /*
@@ -189,7 +213,7 @@
   color: blue;
   font-weight: bold;
   position: absolute;
-  transition: background-color 0.4s linear;  
+  transition: background-color 0.4s linear;
 }
 
 #tmodal:checked, #tmodalSettings:checked, #tmodalTalents:checked { 
@@ -216,4 +240,22 @@
   height: 590px;
   width: 790px; 
   background-color: rgba(0, 0, 0, .80);
+}
+
+/*put me somewhere*/
+
+body{
+  width: 1000px;
+  max-width: 1000px;
+  background-color: black;
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  color: white;
+  
+  /*Stops users from highlighting, helps visuals a bit so everything isn't anchor blue*/
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
 }
