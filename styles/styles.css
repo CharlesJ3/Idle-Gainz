@@ -104,7 +104,7 @@
 
 #menuSystemMainOptions {
   position: absolute;
-  top: 315.5px;
+  top: 192.5px;
   left: 14px;
 }
 
@@ -141,14 +141,14 @@
 
 #menuTabFour {
   transition: 1s;
-  box-shadow: 0.1em 0.1em 0 0  rgb(172, 5, 5), inset 0.1em 0.1em 0 0 #4F2683;  
+  box-shadow: 0.1em 0.1em 0 0  rgb(172, 5, 5), inset 0.1em 0.1em 0 0 rgb(45, 129, 37);  
 }
 
 #menuSystemOne, #menuSystemTwo, #menuSystemThree, #menuSystemFour {
   width: 784px;
-  height: 226px;
+  height: 346px;
   position: absolute;
-  top: 372px;
+  top: 251px;
   left: 10px;
 }
 
@@ -158,35 +158,38 @@
   border-left: 5px solid rgb(47, 20, 202);
   border-right: 5px solid rgb(47, 20, 202);
   transition: 1s;
-  background-image: url('../images/space-ui-background-blue.png');
+  /* background-image: url('../images/space-ui-background-blue.png'); */
 }
 
+.menuSelected {
+  background-color: grey;
+}
 
 #menuSystemTwo {
   border-top: 4px solid red;
   border-bottom: 4px solid red;
-  border-left: 3px solid red;
-  border-right: 3px solid red;
+  border-left: 5px solid red;
+  border-right: 5px solid red;
   display: none;
-  background-image: url('../images/space-ui-background-red.png');
+  /* background-image: url('../images/space-ui-background-red.png'); */
 }
 
 #menuSystemThree {
   border-top: 4px solid green;
   border-bottom: 4px solid green;
-  border-left: 3px solid green;
-  border-right: 3px solid green;
+  border-left: 5px solid green;
+  border-right: 5px solid green;
   display: none;
-  background-image: url('../images/space-ui-background-green.png');
+  /* background-image: url('../images/space-ui-background-green.png'); */
 }
 
 #menuSystemFour {
   border-top: 4px solid purple;
   border-bottom: 4px solid purple;
-  border-left: 3px solid purple;
-  border-right: 3px solid purple;
+  border-left: 5px solid purple;
+  border-right: 5px solid purple;
   display: none;
-  background-image: url('../images/seamless-abstract-nebula.jpg');
+  /* background-image: url('../images/seamless-abstract-nebula.jpg'); */
 }
 
 /*
@@ -258,4 +261,62 @@ body{
        -moz-user-select: none; 
         -ms-user-select: none; 
             user-select: none; 
+}
+
+
+/*
+* Enemy Weight Bars
+*/
+
+#weightBarEnemy{
+  text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;
+  top: 11px;
+  left: 337px;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+/*
+* Liftz
+*/
+#menuSystemOne {
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+.allLiftzTable {
+  width: 784px;
+}
+
+.liftzRow {
+  display:inline-block;
+}
+
+.liftSection {
+  border: 1px solid transparent;
+  border-image: url(../images/dyel1.png) 40% round;
+  border-image-width: 24px;
+  width: 245px;
+  height: 335px;
+}
+
+
+/* Mini-section - Lift Image Backgrounds */
+
+#li01 {
+  width: 50%;
+  height: 73%;
+  background-image: url(../images/mc1s.gif);
+  text-align: center;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.liftImage {
+  color: red;
+  background-image: url('../images/mc1s.gif'); 
 }
