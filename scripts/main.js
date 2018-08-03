@@ -3,6 +3,9 @@
 * Quick Index 
 *
 * - Canvas Settings
+* - Objects
+* - LIFTZ!!!
+* - Initial Image/Text Placement
 */
 
 /*
@@ -12,7 +15,7 @@
 */
 
 
-/*Main battle area*/
+//Main battle area
 const canvas = document.getElementById('battleArea');
 const context = canvas.getContext('2d');
 
@@ -76,7 +79,8 @@ const enemy = {
   maxEnemyWeight: 10
 }
 
-const Lift = function(name, level, weightGain, type, typeTwo, speed, count, cost) {
+const Lift = function(name, level, weightGain, type, typeTwo, speed, count, cost, rank, 
+description) {
   this.name = name,
   this.level = level,     
   this.weightGain = weightGain,
@@ -84,7 +88,9 @@ const Lift = function(name, level, weightGain, type, typeTwo, speed, count, cost
   this.typeTwo = typeTwo,
   this.speed = speed,
   this.count = count,
-  this.cost = cost
+  this.cost = cost,
+  this.rank = rank,
+  this.description = description
 } 
 
 const achievements = {
@@ -96,7 +102,13 @@ const achievements = {
 * LIFTZ!!!
 */
 
-const MarshmellowCurls = new Lift('Marshmellow Curls', 0, 1, 'arms', 'bicep', 0, 1);
+const MarshmellowCurls = new Lift('Marshmellow Curls', 1, 1, 'arms', 'bicep', 1, 1, 1, 0,
+['Make sure you get the miniatures, you wouldn\'t want to pull a muscle.',
+'Congrats, you can lift the fluffier stuff!',
+'Whoa dude, you\'ve upgrade to a fluffy bunny!',
+'Ok, double-bunny, you are ready for the big league now!',
+'You feel awesome! A full 3-bunny-plate rep!']
+);
 
 
 const buyMarshmellowCurls = function(){  
@@ -121,7 +133,29 @@ const buyMarshmellowCurls = function(){
 * Initial Image/Text Placement
 */ 
 
-document.getElementById('ln01').innerHTML = `Title: \n${MarshMellowCurls.name}`;
+//Checks all liftz and renders the proper description based on rank
+const getLiftzProperDescription = (lift) => {
+  if (lift === MarshmellowCurls){
+    document.getElementById('ld01').innerHTML = `${lift.description[lift.rank]}`;
+  }
+
+  console.log(lift.description[0]);
+}
+
+const updateUI = () => {
+  document.getElementById('ln01').innerHTML = `${MarshmellowCurls.name}`;
+  document.getElementById('ll01').innerHTML = `Level  <br />${MarshmellowCurls.level}`;
+  document.getElementById('lr01').innerHTML = `Rank  <br />${MarshmellowCurls.rank}`;
+  document.getElementById('lc01').innerHTML = `Cost  <br />${MarshmellowCurls.cost}`;
+}
+
+updateUI();
+getLiftzProperDescription(MarshmellowCurls);
+
+
+
+
+
 /*
 * Menu and Menu Switching
 */

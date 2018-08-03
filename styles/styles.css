@@ -308,7 +308,7 @@ body{
 
 #li01 {
   width: 50%;
-  height: 73%;
+  height: 35%;
   background-image: url(../images/mc1s.gif);
   text-align: center;
   margin: 0 auto;
@@ -316,7 +316,30 @@ body{
   background-position: bottom;
 }
 
+#ld01 {
+  font-size: 13px;
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 15px;
+  overflow: hidden;
+}
+
 .liftImage {
   color: red;
   background-image: url('../images/mc1s.gif'); 
+}
+
+.liftGroup {
+  display: inline-flex;
+  font-size: 10px;
+}
+
+.liftGroupWidth {
+  border: 1px solid transparent;
+  border-image: url(../images/dyel1.png) 40% round;
+  border-image-width: 24px;
+  width: 74px;
+  height: 50px;
 }
