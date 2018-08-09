@@ -303,9 +303,6 @@ body{
   height: 335px;
 }
 
-
-/* Mini-section - Lift Image Backgrounds */
-
 #li01 {
   width: 50%;
   height: 35%;
@@ -326,9 +323,13 @@ body{
   overflow: hidden;
 }
 
-.liftImage {
+#li01 {
   color: red;
   background-image: url('../images/mc1s.gif'); 
+}
+
+#lft01 {
+  margin-bottom: 2px;
 }
 
 .liftGroup {
@@ -343,3 +344,4 @@ body{
   width: 74px;
   height: 50px;
 }
+

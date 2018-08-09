@@ -48,27 +48,28 @@ drawBorders();
 const player = {
   gainzLevel: 0,
   totalGainz: 0,
+  costMultiplier: 1,
+  level: 0,
+  gainz: 1.0,
+  enemyLootChoice : [0,0,0],
   gainzStatus: ['So small it physically hurts to look at you', 'A disappointment to your ancestors', 'Beginner Gainz Starting', 
   'Ok, starting to get there', 'Worthy of a statue made of butter', 'You don\'t hate yourself... as much', 'The beach is THAT way!',
   ],
-  level: 0,
-  gainz: 0,
-  enemyLootChoice : [0,0,0],
 
   //Our Gainz Status!
-  updateGainz(){
-    if(this.gainzLevel < 6){
-      this.gainzLevel++;
-    }
-  },
+  // updateGainz(){
+  //   if(this.gainzLevel < 6){
+  //     this.gainzLevel++;
+  //   }
+  // },
 
   //Show the Gainz Status!
-  getGainzStatus(){
-    document.getElementById('gainzStatus').innerHTML = `${this.gainzStatus[this.gainzLevel]}`;
-  },
+  // getGainzStatus(){
+  //   document.getElementById('gainzStatus').innerHTML = `${this.gainzStatus[this.gainzLevel]}`;
+  // },
 
   //Update all text that may have been updated randomly at one point in time, space, and gainz
-  runUpdateStatusText(){
+  runUpdateStatusText() {
     this.getGainzStatus();
   }
 
@@ -102,7 +103,8 @@ const achievements = {
 * LIFTZ!!!
 */
 
-const MarshmellowCurls = new Lift('Marshmellow Curls', 1, 1, 'arms', 'bicep', 1, 1, 1, 0,
+//name, level, weightGain, type, typeTwo, speed, count, cost, rank, description
+const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 1000, 0, 1.0, 0,
 ['Make sure you get the miniatures, you wouldn\'t want to pull a muscle.',
 'Congrats, you can lift the fluffier stuff!',
 'Whoa dude, you\'ve upgrade to a fluffy bunny!',
@@ -110,51 +112,72 @@ const MarshmellowCurls = new Lift('Marshmellow Curls', 1, 1, 'arms', 'bicep', 1,
 'You feel awesome! A full 3-bunny-plate rep!']
 );
 
+//Buy Lift One
+const buyLiftOne = function(){  
 
-const buyMarshmellowCurls = function(){  
-
-  for(let x = 0; x < player.costMultiplier; x++){
+  for (let x = 0; x < player.costMultiplier; x++) {
 
     //Initial check for weight
-    if(player.gainz <= MarshmellowCurls.cost){ 
+    if(player.gainz < LiftOne.cost){ 
+      console.log('not enough $');    
+      updateUI();
       break;
     }
 
     //Set a ceiling for the cost
-    player.gainz -= Math.ceil(MarshmellowCurls.cost);
-    MarshmellowCurls.count++;
+    player.gainz -= Math.ceil(LiftOne.cost);
+    LiftOne.count++;
     player.totalGainz++;
+    console.log(player.totalGainz);
+    console.log(LiftOne.count);
    }
   
-    document.getElementById('marshmellowCurlsCost').innerHTML = "Cost: " + nFormatter(Math.ceil(MarshmellowCurls.cost).toFixed(0));
+   updateUI();
 }
+
+//Lift One Auto-Lift
+const autoattackLiftOne = function(){
+  
+  let finalLiftOneSpeed = LiftOne.speed;
+
+    //need at least one lift to start stacking weight!
+    if (LiftOne.count > 0){
+      document.getElementById('lft01').innerHTML = "+" + nFormatter(((LiftOne.weightGain)).toFixed(2));  
+    
+      //Once per timeout this will fire
+      $("#lft01").animate({
+        opacity: 1,
+            }, 100, function() {
+            // Animation complete.
+          }).animate({ 
+                opacity: 0,
+                  }, 350, function() {
+                    // Animation complete.
+                  })};
+    
+  //Lift the weights - where we add to the total
+  enemy.currentEnemyWeight -= (LiftOne.weightGain);
+  
+  //This will make sure this runs again after finishing the timeout OUTSIDE of the function
+  setTimeout(autoattackLiftOne, finalLiftOneSpeed);
+}
+
+//Continually checks for the timeout inside of attack function and resets it once it is done
+setTimeout(autoattackLiftOne, 10);
 
 /*
 * Initial Image/Text Placement
 */ 
 
 //Checks all liftz and renders the proper description based on rank
-const getLiftzProperDescription = (lift) => {
-  if (lift === MarshmellowCurls){
-    document.getElementById('ld01').innerHTML = `${lift.description[lift.rank]}`;
-  }
-
-  console.log(lift.description[0]);
-}
-
 const updateUI = () => {
-  document.getElementById('ln01').innerHTML = `${MarshmellowCurls.name}`;
-  document.getElementById('ll01').innerHTML = `Level  <br />${MarshmellowCurls.level}`;
-  document.getElementById('lr01').innerHTML = `Rank  <br />${MarshmellowCurls.rank}`;
-  document.getElementById('lc01').innerHTML = `Cost  <br />${MarshmellowCurls.cost}`;
+  document.getElementById('ln01').innerHTML = `${LiftOne.name}`;
+  document.getElementById('ll01').innerHTML = `Level  <br />${LiftOne.level}`;
+  document.getElementById('lr01').innerHTML = `Rank  <br />${LiftOne.rank}`;
+  document.getElementById('lc01').innerHTML = `Cost  <br />${LiftOne.cost}`;
 }
 
 updateUI();
-getLiftzProperDescription(MarshmellowCurls);
-
-
-
-
 
 /*
 * Menu and Menu Switching
@@ -228,7 +251,7 @@ function onTimerTick() {
   //Calculate enemy.currentEnemyWeight bar percentage
   const totalRemainingWeight = enemy.currentEnemyWeight / enemy.maxEnemyWeight;
 
-    document.getElementById('weightBarEnemy').innerHTML = nFormatter((enemy.currentEnemyWeight).toFixed(1)) + "/" + nFormatter(((enemy.maxEnemyWeight)).toFixed(1)) + " WEIGHT";
+    document.getElementById('weightBarEnemy').innerHTML = nFormatter((enemy.currentEnemyWeight).toFixed(1)) + "/" + nFormatter(((enemy.maxEnemyWeight)).toFixed(1)) + " MAX OUT LEFT";
     context.fillStyle = "aliceblue";
 
   if (enemy.currentEnemyWeight > 0){
@@ -256,20 +279,20 @@ setInterval(onTimerTick, 100);
 */
 function nFormatter(num) {
   if (num >= 1e51) {
-          return (num / 1e51).toFixed(2).replace(/\.0$/, '') + 'SD';
+    return (num / 1e51).toFixed(2).replace(/\.0$/, '') + 'SD';
   } 
   if (num >= 1e48) {
-          return (num / 1e48).toFixed(2).replace(/\.0$/, '') + 'Q3';
-    } 
+    return (num / 1e48).toFixed(2).replace(/\.0$/, '') + 'Q3';
+  } 
   if (num >= 1e45) {
-          return (num / 1e45).toFixed(2).replace(/\.0$/, '') + 'Q2';
-    } 
+    return (num / 1e45).toFixed(2).replace(/\.0$/, '') + 'Q2';
+  } 
   if (num >= 1e42) {
           return (num / 1e42).toFixed(2).replace(/\.0$/, '') + 'T';
     } 
   if (num >= 1e39) {
         return (num / 1e39).toFixed(2).replace(/\.0$/, '') + 'D';
-  } 
+   } 
   if (num >= 1e36) {
           return (num / 1e36).toFixed(2).replace(/\.0$/, '') + 'u';
     } 
@@ -294,16 +317,16 @@ function nFormatter(num) {
   if (num >= 1e15) {
       return (num / 1e15).toFixed(2).replace(/\.0$/, '') + 'q';
     } 
-  if(num >= 1e12) {
+  if (num >= 1e12) {
       return (num / 1e12).toFixed(2).replace(/\.0$/, '') + 't';
     }  
-  if(num >= 1e9) {
+  if (num >= 1e9) {
       return (num / 1e9).toFixed(2).replace(/\.0$/, '') + 'b';
     }
-  if(num >= 1e6) {
+  if (num >= 1e6) {
       return (num / 1e6).toFixed(2).replace(/\.0$/, '') + 'm';
    }
-  if(num >= 1e3) {
+  if (num >= 1e3) {
       return (num / 1e3).toFixed(2).replace(/\.0$/, '') + 'k';
    }
 
