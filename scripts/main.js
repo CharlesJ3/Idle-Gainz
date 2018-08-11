@@ -104,7 +104,7 @@ const achievements = {
 */
 
 //name, level, weightGain, type, typeTwo, speed, count, cost, rank, description
-const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 3500, 0, 1.0, 0,
+const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 3000, 0, 1.0, 0,
 ['Make sure you get the miniatures, you wouldn\'t want to pull a muscle.',
 'Congrats, you can lift the fluffier stuff!',
 'Whoa dude, you\'ve upgrade to a fluffy bunny!',
@@ -272,6 +272,40 @@ setInterval(onTimerTick, 100);
 /*
 * Speed Bars
 */  
+
+function move() {
+  var elem = document.getElementById("myBar"); 
+  var elem2 = document.getElementById("myProgress");
+  var width = 0;
+  var checkSpeed = 0;
+  var finalEnemySpeedBonus = LiftOne.speed - checkSpeed;
+  var maxLiftWidth = (finalEnemySpeedBonus * .00011);
+  //^ need a dynamic number; too static causing weird pauses
+
+
+  elem2.style.maxWidth = 100 + '%';
+
+  function frame() {
+      if (LiftOne.speed <= checkSpeed ) {
+          console.log(checkSpeed);
+          width = 0;
+          elem2.style.maxWidth = finalEnemySpeedBonus + '%';
+          checkSpeed = .01;
+          elem2.style.maxWidth = 100 + '%';
+          clearInterval(id);
+      } else {
+          width += maxLiftWidth; 
+          checkSpeed += 10;
+          elem.style.width = width + '%'; 
+      }
+  }
+
+  const id = setInterval(frame, 10);
+}
+
+move();
+setInterval(move, LiftOne.speed);
+
 
 const LiftOneSpeedBar = {
   x: 220,

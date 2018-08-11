@@ -348,3 +348,13 @@ body{
 #lsb01 {
   display: none;
 }
+
+#myProgress {
+  /* max-width: 125% !important; */
+  background-color: grey;
+}
+#myBar {
+  width: 1%;
+  height: 10px;
+  background-color: green;
+}
