@@ -104,7 +104,7 @@ const achievements = {
 */
 
 //name, level, weightGain, type, typeTwo, speed, count, cost, rank, description
-const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 1000, 0, 1.0, 0,
+const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 3500, 0, 1.0, 0,
 ['Make sure you get the miniatures, you wouldn\'t want to pull a muscle.',
 'Congrats, you can lift the fluffier stuff!',
 'Whoa dude, you\'ve upgrade to a fluffy bunny!',
@@ -113,12 +113,12 @@ const LiftOne = new Lift('Marshmellow Curls', 1, 0, 'arms', 'bicep', 1000, 0, 1.
 );
 
 //Buy Lift One
-const buyLiftOne = function(){  
-
+const buyLiftOne = function(){ 
+  
   for (let x = 0; x < player.costMultiplier; x++) {
 
     //Initial check for weight
-    if(player.gainz < LiftOne.cost){ 
+    if (player.gainz < LiftOne.cost) { 
       console.log('not enough $');    
       updateUI();
       break;
@@ -130,7 +130,10 @@ const buyLiftOne = function(){
     player.totalGainz++;
     console.log(player.totalGainz);
     console.log(LiftOne.count);
-   }
+
+    //Increase Weight Gainz
+    LiftOne.weightGain += 1;
+  }
   
    updateUI();
 }
@@ -142,7 +145,7 @@ const autoattackLiftOne = function(){
 
     //need at least one lift to start stacking weight!
     if (LiftOne.count > 0){
-      document.getElementById('lft01').innerHTML = "+" + nFormatter(((LiftOne.weightGain)).toFixed(2));  
+      document.getElementById('lft01').innerHTML = "-" + nFormatter((LiftOne.weightGain).toFixed(2));  
     
       //Once per timeout this will fire
       $("#lft01").animate({
@@ -236,7 +239,7 @@ $( '.menuTable' ).hover(
 );
 
 /*
-* Weight Bar
+* Bars
 */  
 
 const weightBarEnemy = {
@@ -263,6 +266,39 @@ function onTimerTick() {
 
 // Loop
 setInterval(onTimerTick, 100);
+
+
+
+/*
+* Speed Bars
+*/  
+
+const LiftOneSpeedBar = {
+  x: 220,
+  y: 5,
+  width: 65,
+  height: 25
+};
+// Render Loop
+function onTimerTickLiftOne() {
+
+  //Calculate enemy.currentEnemyWeight bar percentage
+  const totalRemainingWeight = enemy.currentEnemyWeight / enemy.maxEnemyWeight;
+  context.fillStyle = "green";
+  function x(){
+    if (enemy.currentEnemyWeight > 0) {
+      context.fillRect(LiftOneSpeedBar.height, LiftOneSpeedBar.x, LiftOneSpeedBar.y, LiftOneSpeedBar.width);
+      context.fillStyle = "aliceblue";
+      context.fillRect(LiftOneSpeedBar.height, LiftOneSpeedBar.x, LiftOneSpeedBar.y, LiftOneSpeedBar.width * totalRemainingWeight);
+    }
+  }
+  document.getElementById('lsb01').innerHTML = `${x()}`;
+}
+
+// Loop
+setInterval(onTimerTickLiftOne, 10);
+
+
 
 
 /*
